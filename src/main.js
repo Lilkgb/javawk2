@@ -15,15 +15,18 @@ $(document).ready(function() {
     const state = $("option:selected").val();
     const cityInput = $(".city").val();
     const city = cityInput.toLowerCase();
-    console.log(city);
+    let locationPromise = doctorAPI.getLocation(city, state);
+    locationPromise.then(function(response) {
+      let body = JSON.parse(response);
+      console.log(body);
+    })
     const docName = $(".name").val();
     $(".name").val('');
     if (docName == '') {
       return $(".info").text("You did not input correct information. Please try again");
     }
-    $(".loading").show();
-    let promise = doctorAPI.getDoctor(docName, city, state);
-    console.log(promise);
+    // $(".loading").show();
+    let promise = doctorAPI.getDoctor(docName, location);
     promise.then(function(response) {
       let body = JSON.parse(response);
       $(".recentlySearched").show();
