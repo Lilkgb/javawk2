@@ -56,6 +56,9 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   margin: 10px;
   grid-gap: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
+  .names {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+  }
 }
