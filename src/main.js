@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     promise.then(function(response) {
       let body = JSON.parse(response);
-      $(".info").text(`${body.data.practices.name}`);
+      $(".info").text(`${body.data.practices[0].name}`);
     })
   });
 });
