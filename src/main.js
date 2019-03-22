@@ -4,6 +4,10 @@ import Doctor from './backEnd.js';
 
 $(document).ready(function() {
   let doctorAPI = new Doctor();
+  $(".findDoctor").hide();
+  $(".findDoc").click(function() {
+    $(".findDoctor").toggle("slow");
+  });
   $(".findDoctor").submit(function(event) {
     $(".info").text('');
     event.preventDefault();
