@@ -5,6 +5,7 @@ import Doctor from './backEnd.js';
 $(document).ready(function() {
   let doctorAPI = new Doctor();
   $(".findDoctor").hide();
+  $(".recentlySearched").hide();
   $(".findDoc").click(function() {
     $(".findDoctor").toggle("slow");
   });
@@ -20,6 +21,8 @@ $(document).ready(function() {
     if (docName == '') {
       return $(".info").text("You did not input correct information. Please try again");
     }
+    $(".recentlySearched").show();
+    $(".recent").append(`${docName} `)
     // $(".loading").show();
     let promise = doctorAPI.getDoctor(docName, city, state);
 
