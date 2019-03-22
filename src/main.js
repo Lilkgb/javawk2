@@ -21,15 +21,15 @@ $(document).ready(function() {
     if (docName == '') {
       return $(".info").text("You did not input correct information. Please try again");
     }
-    $(".recentlySearched").show();
-    $(".recent").append(`${docName} `)
-    // $(".loading").show();
+    $(".loading").show();
     let promise = doctorAPI.getDoctor(docName, city, state);
-
+    console.log(promise);
     promise.then(function(response) {
       let body = JSON.parse(response);
+      $(".recentlySearched").show();
+      $(".recent").append(`${docName} `)
       setTimeout(() => {
-        console.log(body.data);
+        console.log(body);
         for (let i = 0; i < body.data.length; i++){
         $(".info").append(`<div class="names"> Doctor:<b> ${body.data[i].profile.first_name} ${body.data[i].profile.last_name}</b><br> Gender: <b>${body.data[i].profile.gender}</b><br> Works at: <b>${body.data[i].practices[0].name}</b><br> Specialty:<b> ${body.data[i].specialties[0].name}</b><br> Phone Number <a href=tel:${body.data[i].practices[0].phones[0].number}>${body.data[i].practices[0].phones[0].number}</a></div>`);
         if(body.data[i].profile.gender == "undefined") {
