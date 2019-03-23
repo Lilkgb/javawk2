@@ -12,15 +12,15 @@
         <img src="img/doctor.png" alt="">
       </div>
       <div class="tabs">
-        <p> <span class="findDoc">Find Doctor</span> | Symptons</p>
+        <p> <span class="findDoc">Find Doctor</span></p>
       </div>
-    </div>  
+    </div>
     </form>
     <img src="img/loading.gif" class="loading" alt="">
     <form class="findDoctor">
       <label for="name">Find A Doctor By Name</label>
-      <label for="city">City</label>
-      <input type="text" class="city" name="" value="">
+      <label for="city">City / Zip Code</label>
+      <input type="text" class="city" name="" required>
       <label for="">State</label>
       <select>
       	<option value="al">Alabama</option>
@@ -76,7 +76,9 @@
       	<option value="wy">Wyoming</option>
       </select>
       <label for="name">Name of Doctor</label>
-      <input type="text" class="name" name="" value="" placeholder="Doctors Name">
+      <input type="text" class="name" name="" placeholder="Doctors Name" required>
+      <label for="range">Range</label>
+      <input type="number" class="range" name="" value="25">
       <button type="submit" name="button">Submit</button>
     </form>
     <div class="recentlySearched"> <h1>Your recent Searches are</h1> <p><span class="recent"></span></p></div>

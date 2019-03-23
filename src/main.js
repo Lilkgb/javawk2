@@ -4,6 +4,13 @@ import Doctor from './backEnd.js';
 
 $(document).ready(function() {
   let doctorAPI = new Doctor();
+  navigator.geolocation.getCurrentPosition(function(location) {
+    let currentLocation = doctorAPI.getLocation(location.coords.latitude, location.coords.longitude);
+    currentLocation.then(function(response) {
+      let body = JSON.parse(response);
+      $(".city").val(body[0].address.postcode);
+    })
+  });
   $(".findDoctor").hide();
   $(".recentlySearched").hide();
   $(".findDoc").click(function() {
@@ -16,18 +23,18 @@ $(document).ready(function() {
     const cityInput = $(".city").val();
     const city = cityInput.toLowerCase();
     const docName = $(".name").val();
+    const range = $(".range").val();
+    console.log(range);
     $(".name").val('');
-    if (docName == '') {
-      return $(".info").text("You did not input correct information. Please try again");
-    }
-    // $(".loading").show();
+    $(".loading").show();
     let locationPromise = doctorAPI.getLocation(city, state);
     locationPromise.then(function(response) {
       let body = JSON.parse(response);
+      console.log(body);
       let lat = `${body[0].lat}`;
       let lon = `${body[0].lon}`;
       console.log(lat, lon);
-      let promise = doctorAPI.getDoctor(docName, lat, lon);
+      let promise = doctorAPI.getDoctor(docName, lat, lon, range);
       promise.then(function(response) {
         let body = JSON.parse(response);
         console.log(body);
