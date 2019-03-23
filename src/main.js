@@ -2,6 +2,9 @@ import $ from 'jquery';
 import './input.scss';
 import Doctor from './backEnd.js';
 
+$(".findDoctor").hide();
+$(".recentlySearched").hide();
+
 $(document).ready(function() {
   let doctorAPI = new Doctor();
   navigator.geolocation.getCurrentPosition(function(location) {
@@ -11,8 +14,6 @@ $(document).ready(function() {
       $(".city").val(body[0].address.postcode);
     })
   });
-  $(".findDoctor").hide();
-  $(".recentlySearched").hide();
   $(".findDoc").click(function() {
     $(".findDoctor").toggle("slow");
   });
