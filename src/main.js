@@ -12,6 +12,8 @@ $(document).ready(function() {
     currentLocation.then(function(response) {
       let body = JSON.parse(response);
       $(".city").val(body[0].address.postcode);
+      $(".stateVal").val(body[0].address.state).change();
+      console.log(body);
     })
   });
   $(".findDoc").click(function() {
@@ -28,7 +30,7 @@ $(document).ready(function() {
     console.log(range);
     $(".name").val('');
     $(".loading").show();
-    let locationPromise = doctorAPI.getLocation(city, state);
+    let locationPromise = doctorAPI.getLocation(city,state);
     locationPromise.then(function(response) {
       let body = JSON.parse(response);
       console.log(body);
@@ -47,8 +49,8 @@ $(document).ready(function() {
             if(body.data[i].profile.gender == "undefined") {
               return "Not Listed"
             }
-            $(".loading").hide();
           }
+          $(".loading").hide();
         },2000);
       })
     })
