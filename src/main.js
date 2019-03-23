@@ -20,6 +20,7 @@ $(document).ready(function() {
     $(".findDoctor").toggle("slow");
   });
   $(".findDoctor").submit(function(event) {
+    $(".error").text('');
     $(".info").text('');
     event.preventDefault();
     const state = $("option:selected").val();
@@ -51,6 +52,9 @@ $(document).ready(function() {
             }
           }
           $(".loading").hide();
+          if (body.data.length === 0) {
+            $(".error").text("Sorry, there was no results with that name in your area.")
+          }
         },2000);
       })
     })
