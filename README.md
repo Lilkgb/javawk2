@@ -16,7 +16,7 @@ _This webpage allows you to input your city and state and a doctors name and loo
 * _You may run `npm start` to bring up a live version of the website through your local host_
 * _I use karma-jasime to test my functions so if you would like you use it as well run `npm test` on a mac. I haven't figured out how to make jasmine work on pc_
 * _To be able to use the Better Doctor API you must first get a API-Key from `https://developer.betterdoctor.com/`_
-* _Either create a .env file on the top layer to store the API-Key or you can use it directly inside the http._
+* _Either create a .env file on the top layer and inside put `exports.apiKey = [api-key]` and call on it inside your back end logic with `https://api.betterdoctor.com/user_key=${process.env.exports.apiKey}`_
 * _Follow Better Doctors Docs if you have any questions_
 * _Create a repository for yourself on github or whatever you may use_
 * _Copy url link thats given and run `git remote add -Your initials- -Link-`_

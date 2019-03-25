@@ -38,7 +38,7 @@ export default class Doctor {
     // xhr.done(function(data) { console.log("success got data", data); });
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${docName}&location=${lat}%2C${lon}%2C${range}&user_location=37.773%2C-122.413&skip=0&limit=25&user_key=1444ae1df809a2c84653c5b90a9e9726`;
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${docName}&location=${lat}%2C${lon}%2C${range}&user_location=37.773%2C-122.413&skip=0&limit=25&user_key=${process.env.exports.apiKey}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
