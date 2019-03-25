@@ -46,10 +46,10 @@ $(document).ready(function() {
         $(".recent").append(`${docName} `)
         setTimeout(() => {
           for (let i = 0; i < body.data.length; i++){
-            $(".info").append(`<div class="names"> Doctor:<b> ${body.data[i].profile.first_name} ${body.data[i].profile.last_name}</b><br> Gender: <b>${body.data[i].profile.gender}</b><br> Works at: <b>${body.data[i].practices[0].name}</b><br> Specialty:<b> ${body.data[i].specialties[0].uid}</b><br> Phone Number <a href=tel:${body.data[i].practices[0].phones[0].number}>${body.data[i].practices[0].phones[0].number}</a></div>`);
-            if(body.data[i].profile.gender == "undefined") {
-              return "Not Listed"
+            if(body.data[i].specialties.length === 0) {
+              body.data[i].specialties = [{uid: "None Listed"}];
             }
+            $(".info").append(`<div class="names"> Doctor:<b> ${body.data[i].profile.first_name} ${body.data[i].profile.last_name}</b><br> Gender: <b>${body.data[i].profile.gender}</b><br> Works at: <b>${body.data[i].practices[0].name}</b><br> Specialty:<b> ${body.data[i].specialties[0].uid}</b><br> Phone Number <a href=tel:${body.data[i].practices[0].phones[0].number}>${body.data[i].practices[0].phones[0].number}</a></div>`);
           }
           $(".loading").hide();
           if (body.data.length === 0) {
